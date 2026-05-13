@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIGHT — Learning Inclusion & Green Heritage through Technology</title>
+<meta name="description" content="Erasmus+ Youth Exchange in Rocchetta di Vara, La Spezia, Italy. 7–14 November 2026. 33 participants from Italy, Latvia, Greece, Romania & Spain.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+/* ---------------------------------------------------------
+   TOKENS
+---------------------------------------------------------- */
+:root {
+  --paper:        #F4EFE6;
+  --paper-warm:   #EBE3D1;
+  --ink:          #1C2419;
+  --ink-soft:     #3A4434;
+  --moss:         #3E5236;
+  --moss-light:   #5A7050;
+  --sage:         #8B9F76;
+  --terracotta:   #C25A3C;
+  --terracotta-d: #9E4528;
+  --rule:         rgba(28, 36, 25, 0.15);
+  --rule-strong:  rgba(28, 36, 25, 0.4);
+
+  --serif: "Fraunces", Georgia, serif;
+  --sans:  "Manrope", -apple-system, system-ui, sans-serif;
+
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ---------------------------------------------------------
+   RESET
+---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { padding-left: 1.2em; }
+li { margin-bottom: 0.4em; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; line-height: 1.05; }
+
+/* ---------------------------------------------------------
+   UTILITIES
+---------------------------------------------------------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--moss);
+}
+.section-number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--terracotta);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
+
+/* ---------------------------------------------------------
+   NAV
+---------------------------------------------------------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding-block: 1rem;
+  background: rgba(244, 239, 230, 0.0);
+  backdrop-filter: blur(0px);
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, padding 0.3s ease, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(244, 239, 230, 0.88);
+  backdrop-filter: blur(12px);
+  padding-block: 0.6rem;
+  border-bottom-color: var(--rule);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  display: flex; align-items: baseline; gap: 0.6rem;
+}
+.brand-mark {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta);
+  font-size: 0.9em;
+}
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.nav-links a {
+  position: relative;
+  padding-block: 0.3rem;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--terracotta);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-toggle { display: none; }
+
+@media (max-width: 880px) {
+  .nav-links {
+    position: fixed;
+    inset: 0 0 0 30%;
+    background: var(--paper);
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1.5rem;
+    font-size: 1.1rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
+    border-left: 1px solid var(--rule);
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-toggle {
+    display: flex; flex-direction: column; gap: 5px;
+    width: 28px; height: 28px;
+    justify-content: center;
+    z-index: 200;
+  }
+  .nav-toggle span {
+    display: block; height: 1.5px; background: var(--ink);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+}
+
+/* ---------------------------------------------------------
+   HERO
+---------------------------------------------------------- */
+.hero {
+  position: relative;
+  padding: 9rem 0 5rem;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+}
+.hero-meta-top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--rule-strong);
+  margin-bottom: 2rem;
+}
+.hero-title {
+  font-size: clamp(4.5rem, 18vw, 14rem);
+  line-height: 0.88;
+  font-weight: 350;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  margin-bottom: 1.5rem;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.hero-tagline {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-soft);
+  max-width: 30ch;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+}
+.hero-metadata {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule-strong);
+}
+.meta-item .label {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--moss); margin-bottom: 0.4rem;
+}
+.meta-item .value {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.meta-item .value strong { font-weight: 500; }
+
+@media (max-width: 720px) {
+  .hero { padding-top: 7rem; }
+  .hero-metadata { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+  .hero-meta-top { flex-wrap: wrap; gap: 0.5rem; }
+}
+
+/* Decorative topographic lines */
+.topo {
+  position: absolute;
+  right: -10%;
+  top: 8rem;
+  width: 60%;
+  max-width: 700px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
+
+/* Countdown */
+.countdown {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--terracotta);
+  font-size: 1rem;
+}
+.countdown strong {
+  font-family: var(--serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   INDEX / TABLE OF CONTENTS
+---------------------------------------------------------- */
+.index {
+  padding: 4rem 0 2rem;
+  background: var(--paper-warm);
+  border-block: 1px solid var(--rule);
+}
+.index-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 2.5rem; gap: 2rem; flex-wrap: wrap;
+}
+.index-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.index-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  transition: padding-left 0.25s ease, color 0.25s ease;
+  color: var(--ink);
+}
+.index-item .num {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--terracotta);
+  font-weight: 300;
+}
+.index-item .arrow {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--moss);
+  transition: transform 0.3s ease;
+}
+.index-item:hover { padding-left: 1rem; color: var(--moss); }
+.index-item:hover .arrow { transform: translateX(6px); }
+
+/* ---------------------------------------------------------
+   SECTIONS
+---------------------------------------------------------- */
+section.content {
+  padding: 6rem 0;
+  scroll-margin-top: 5rem;
+}
+section.content + section.content { border-top: 1px solid var(--rule); }
+
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  max-width: 800px;
+}
+.section-head h2 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 350;
+  letter-spacing: -0.02em;
+}
+.section-head h2 em { font-style: italic; font-weight: 300; color: var(--terracotta); }
+.section-lead {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 55ch;
+}
+
+.prose { max-width: 70ch; font-size: 1.0625rem; line-height: 1.7; }
+.prose p + p { margin-top: 1.1em; }
+.prose strong { font-weight: 600; color: var(--ink); }
+
+.dropcap::first-letter {
+  font-family: var(--serif);
+  font-size: 4.5em;
+  font-weight: 300;
+  float: left;
+  line-height: 0.9;
+  margin: 0.05em 0.1em 0 0;
+  color: var(--moss);
+}
+
+/* Two-column layout for some sections */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 880px) { .two-col { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+/* Objectives / list with numbers */
+.objectives {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+.objective {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.objective:first-child { border-top: 0; padding-top: 0; }
+.objective .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2rem;
+  color: var(--terracotta);
+  line-height: 1;
+  min-width: 2.5ch;
+}
+.objective h4 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+.objective p { margin: 0; color: var(--ink-soft); }
+
+/* Pull quote / callout */
+.pullquote {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--moss);
+  padding: 2rem 0 2rem 2.5rem;
+  border-left: 2px solid var(--terracotta);
+  margin: 3rem 0;
+  max-width: 50ch;
+}
+.pullquote::before {
+  content: "";
+  display: block;
+  font-family: var(--serif);
+  font-size: 4rem;
+  line-height: 0;
+  color: var(--terracotta);
+  margin-bottom: 1.5rem;
+}
+
+/* Mandatory / highlight box */
+.mandatory {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem;
+  margin: 3rem 0;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.mandatory .label-tag {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--terracotta);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding-block: 0.5rem;
+}
+.mandatory h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.mandatory p { margin: 0.5em 0 0; color: rgba(244, 239, 230, 0.7); }
+@media (max-width: 720px) {
+  .mandatory { padding: 2rem; grid-template-columns: 1fr; gap: 1rem; }
+  .mandatory .label-tag { writing-mode: horizontal-tb; transform: none; }
+}
+
+/* Editorial table */
+.table-wrap { overflow-x: auto; margin: 2rem 0; }
+.editorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: 640px;
+}
+.editorial-table th, .editorial-table td {
+  text-align: left;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.editorial-table thead th {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--moss);
+  border-bottom: 1px solid var(--rule-strong);
+  padding-block: 1.2rem;
+}
+.editorial-table tbody th {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+.editorial-table tbody td {
+  font-variant-numeric: tabular-nums;
+}
+.editorial-table tfoot td {
+  font-weight: 600;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 0;
+}
+
+/* Packing checklist */
+.checklist {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.7rem 2rem;
+}
+.checklist li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 8px; height: 8px;
+  border: 1px solid var(--moss);
+  border-radius: 1px;
+}
+
+/* Cards (airports, sub-sections) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.card {
+  padding: 1.6rem 1.5rem;
+  background: var(--paper-warm);
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--moss); }
+.card .code {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--terracotta);
+  margin-bottom: 0.4rem;
+}
+.card h4 { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; }
+.card p { font-size: 0.85rem; color: var(--ink-soft); margin: 0.3rem 0 0; }
+
+/* CTA button */
+.cta-row { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
+.button {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.05rem 1.8rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.button:hover { background: var(--moss); transform: translateY(-2px); }
+.button .arrow { font-family: var(--serif); font-style: italic; }
+.button-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.button-ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* Image placeholder — clean, editorial */
+.image-slot {
+  background: linear-gradient(135deg, var(--paper-warm), var(--sage));
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--moss);
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+.image-slot::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(28,36,25,0.04) 20px, rgba(28,36,25,0.04) 21px);
+  pointer-events: none;
+}
+
+/* Team placeholder */
+.team-placeholder {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: var(--paper-warm);
+  border: 1px dashed var(--rule-strong);
+  border-radius: 2px;
+}
+.team-placeholder p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--moss);
+  margin: 0;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 0 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(244, 239, 230, 0.15);
+}
+@media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-grid h4 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 1.2rem;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.footer-brand em { font-style: italic; color: var(--terracotta); }
+.footer-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(244, 239, 230, 0.6);
+  max-width: 35ch;
+  font-size: 1.05rem;
+}
+.footer-grid ul { list-style: none; padding: 0; }
+.footer-grid li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+.footer-grid a { color: rgba(244, 239, 230, 0.75); transition: color 0.2s; }
+.footer-grid a:hover { color: var(--terracotta); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: rgba(244, 239, 230, 0.45);
+  padding-top: 2rem;
+  flex-wrap: wrap; gap: 1rem;
+}
+
+/* ---------------------------------------------------------
+   REVEAL ANIMATION
+---------------------------------------------------------- */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================== NAV ================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">light <span class="brand-mark">'26</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#travel">Travel</a>
+      <a href="#reimbursement">Reimbursement</a>
+      <a href="#accommodation">Stay</a>
+      <a href="#packing">Bring</a>
+      <a href="#liguria">Liguria</a>
+      <a href="#team">Team</a>
+      <a href="#gdpr">GDPR</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================== HERO ================== -->
+<header class="hero" id="top">
+  <svg class="topo" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1" style="color:var(--moss)">
+      <path d="M0,420 Q150,360 300,400 T700,380"/>
+      <path d="M0,380 Q150,310 300,350 T700,330"/>
+      <path d="M0,340 Q150,260 300,300 T700,280"/>
+      <path d="M0,300 Q150,210 300,250 T700,230"/>
+      <path d="M0,260 Q150,160 300,200 T700,180"/>
+      <path d="M0,220 Q150,120 300,160 T700,140"/>
+      <path d="M0,180 Q150, 80 300,120 T700, 95"/>
+      <path d="M0,140 Q150, 40 300, 80 T700, 50"/>
+    </g>
+  </svg>
+
+  <div class="container">
+    <div class="hero-meta-top">
+      <span>Erasmus+ · Youth Exchange</span>
+      <span>Issue Nº 01 · 2026</span>
+    </div>
+
+    <h1 class="hero-title">L<em>i</em>ght</h1>
+
+    <p class="hero-tagline">Learning Inclusion &amp; Green Heritage through Technology.</p>
+
+    <div class="hero-metadata">
+      <div class="meta-item">
+        <div class="label">When</div>
+        <div class="value"><strong>07 — 14</strong> Nov 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Where</div>
+        <div class="value"><strong>Rocchetta di Vara</strong><br>La Spezia · Italy</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Who</div>
+        <div class="value"><strong>33</strong> participants<br>5 countries</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Countdown</div>
+        <div class="value">
+          <span class="countdown"><strong id="cdNum">—</strong> days to go</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================== INDEX ================== -->
+<section class="index" aria-label="Sections">
+  <div class="container">
+    <div class="index-header">
+      <h2>This is an <em>infopack</em>.</h2>
+      <p class="eyebrow">Please go through all sections carefully</p>
+    </div>
+    <div class="index-grid">
+      <a href="#about"          class="index-item"><span class="num">01</span><span>The Project</span><span class="arrow">→</span></a>
+      <a href="#travel"         class="index-item"><span class="num">02</span><span>Travel</span><span class="arrow">→</span></a>
+      <a href="#reimbursement"  class="index-item"><span class="num">03</span><span>Reimbursement</span><span class="arrow">→</span></a>
+      <a href="#accommodation"  class="index-item"><span class="num">04</span><span>Accommodation</span><span class="arrow">→</span></a>
+      <a href="#packing"        class="index-item"><span class="num">05</span><span>What to Bring</span><span class="arrow">→</span></a>
+      <a href="#liguria"        class="index-item"><span class="num">06</span><span>La Spezia &amp; Liguria</span><span class="arrow">→</span></a>
+      <a href="#team"           class="index-item"><span class="num">07</span><span>Our Team</span><span class="arrow">→</span></a>
+      <a href="#gdpr"           class="index-item"><span class="num">08</span><span>GDPR</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================== ABOUT ================== -->
+<section class="content reveal" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 01</span>
+      <h2>The <em>project</em>.</h2>
+      <p class="section-lead">To empower young people to become active changemakers by connecting digital innovation, social inclusion, sustainability and European green heritage through non-formal education.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="prose dropcap">
+        <p>The project LIGHT — Learning Inclusion &amp; Green Heritage through Technology — supports young people in developing practical competences, attitudes and tools to promote environmental responsibility, inclusive participation and digital creativity in their communities.</p>
+        <p>This mobility is a Youth Exchange hosted in La Spezia, Italy, bringing together young people from Italy, Latvia, Greece, Romania and Spain. It focuses on the connection between green transition, digital transformation, social inclusion and cultural heritage.</p>
+        <p>Participants will explore how cultural and natural heritage can inspire climate action, responsible consumption and civic engagement — and will learn how to use digital tools, storytelling and social media to communicate meaningful messages and create youth-led campaigns with local and European impact.</p>
+      </div>
+
+      <div>
+        <h3 style="font-size:1.4rem; font-style:italic; font-weight:300; margin-bottom:1.5rem; color:var(--moss)">The ideal participant</h3>
+        <ul class="checklist">
+          <li>18–25 years old (preferably 22–25+)</li>
+          <li>Minimum English level</li>
+          <li>Motivated to engage actively</li>
+          <li>Interested in sustainability &amp; heritage</li>
+          <li>Curious about digital storytelling</li>
+          <li>Open to intercultural learning</li>
+          <li>Ready to share results back home</li>
+          <li>2 fewer-opportunities per country</li>
+        </ul>
+        <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--ink-soft); font-style:italic">* First-time Erasmus+ youth have priority · gender balance recommended</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--serif); font-size:2rem; font-weight:350; margin: 4rem 0 2rem">Objectives</h3>
+    <ol class="objectives">
+      <li class="objective">
+        <span class="num">i.</span>
+        <div>
+          <h4>Increase awareness about European green heritage and sustainable practices</h4>
+          <p>For young participants from Italy, Latvia, Greece, Romania and Spain.</p>
+        </div>
+      </li>
+      <li class="objective">
+        <span class="num">ii.</span>
+        <div>
+          <h4>Develop digital competences and media literacy</h4>
+          <p>By supporting participants in creating youth-led digital campaigns on sustainability, inclusion and cultural heritage.</p>
+        </div>
+      </li>
+      <li class="objective">
+        <span class="num">iii.</span>
+        <div>
+          <h4>Promote social inclusion and active youth participation</h4>
+          <p>A safe intercultural learning space where young people — including 2 participants with fewer opportunities per country — can cooperate and take active roles.</p>
+        </div>
+      </li>
+      <li class="objective">
+        <span class="num">iv.</span>
+        <div>
+          <h4>Strengthen teamwork, intercultural dialogue and leadership skills</h4>
+          <p>Through group challenges, creative workshops, peer learning and daily reflection.</p>
+        </div>
+      </li>
+      <li class="objective">
+        <span class="num">v.</span>
+        <div>
+          <h4>Encourage follow-up actions in local communities</h4>
+          <p>Through youth-led campaigns, dissemination activities and reusable project outputs.</p>
+        </div>
+      </li>
+    </ol>
+
+    <p style="margin-top:3rem; font-size:0.95rem; color:var(--ink-soft); font-style:italic; text-align:center">
+      Schedule of activities will be posted no later than one week before the mobility.
+    </p>
+  </div>
+</section>
+
+<!-- ================== TRAVEL ================== -->
+<section class="content reveal" id="travel">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 02</span>
+      <h2><em>Travel</em>.</h2>
+      <p class="section-lead">Fly into one of the airports below. From there, reach La Spezia Centrale — your meeting point with the team.</p>
+    </div>
+
+    <h3 style="font-size:1.4rem; font-style:italic; font-weight:300; margin-bottom:1.5rem; color:var(--moss)">Recommended airports</h3>
+    <div class="cards">
+      <div class="card"><div class="code">MXP</div><h4>Milano Malpensa</h4><p>Northern hub · best long-haul connections</p></div>
+      <div class="card"><div class="code">LIN</div><h4>Milano Linate</h4><p>City-centre · short transfers</p></div>
+      <div class="card"><div class="code">BGY</div><h4>Bergamo Orio al Serio</h4><p>Low-cost carriers</p></div>
+      <div class="card"><div class="code">TRN</div><h4>Torino Caselle</h4><p>Turin · alternative to Milan</p></div>
+      <div class="card"><div class="code">PSA</div><h4>Pisa Galileo Galilei</h4><p>Closest to La Spezia</p></div>
+    </div>
+
+    <div class="pullquote">
+      La Spezia Centrale is the meeting point. Please do not go directly to the accommodation unless the organising team instructs you to.
+    </div>
+
+    <div class="two-col">
+      <div class="prose">
+        <p><strong>From airport to La Spezia Centrale</strong> — organise your trip by train or bus/train combination after landing. Check connections carefully before buying tickets, and make sure your arrival time allows you to reach La Spezia Centrale on arrival day.</p>
+        <p><strong>From La Spezia Centrale to the venue</strong> — the venue is outside the city, in Rocchetta di Vara / Val di Vara. The team will arrange three car transfers from La Spezia Centrale in different time slots, grouped by your arrival schedule. Share your travel details with us as soon as your tickets are purchased.</p>
+      </div>
+      <div>
+        <h4 style="font-family:var(--sans); font-size:0.95rem; font-weight:600; margin-bottom:1rem">Notify the team immediately in case of:</h4>
+        <ul class="checklist">
+          <li>Flight delay</li>
+          <li>Train delay</li>
+          <li>Missed connection</li>
+          <li>Change of arrival time</li>
+          <li>Any emergency during travel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== REIMBURSEMENT ================== -->
+<section class="content reveal" id="reimbursement">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 03</span>
+      <h2><em>Reimbursement</em>.</h2>
+      <p class="section-lead">Maximum amounts by distance band (green travel) and local transport. Keep every ticket, boarding pass, and proof of payment.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="editorial-table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Participants</th>
+            <th>Travel — green</th>
+            <th>Local transport</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Italy</th><td>7</td><td>—</td><td>—</td></tr>
+          <tr><th>Romania</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
+          <tr><th>Latvia</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
+          <tr><th>Greece</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
+          <tr><th>Spain</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:0.9rem; color:var(--ink-soft); font-style:italic; margin-bottom:3rem">
+      Each national group is encouraged to include 2 participants with fewer opportunities.
+    </p>
+
+    <div class="two-col">
+      <div class="prose">
+        <h4 style="font-family:var(--sans); font-size:1rem; font-weight:600; margin-bottom:1rem">Keep and upload</h4>
+        <ul class="checklist">
+          <li>Travel tickets</li>
+          <li>Booking confirmations</li>
+          <li>Travel itineraries</li>
+          <li>Boarding passes (originals or screenshots)</li>
+          <li>Proof of payment</li>
+          <li>Invoices &amp; receipts when available</li>
+        </ul>
+      </div>
+      <div class="prose">
+        <h4 style="font-family:var(--sans); font-size:1rem; font-weight:600; margin-bottom:1rem">Workflow</h4>
+        <p>Once you've bought tickets and joined the project group, you'll receive access to our Google Drive — the main tool used during the project. Inside, you'll find the Reimbursement folder.</p>
+        <p>In your country folder: create a personal folder with your full name, upload your documents (rename them clearly), and copy the country Excel file to start logging costs. <strong>One Excel file per country.</strong> Don't worry about exchange rates — the team will calculate them.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:3rem; font-family:var(--serif); font-style:italic; color:var(--moss); text-align:center; font-size:1.1rem">
+      Thank you for reading carefully. Your future reimbursement team already appreciates you very much.
+    </p>
+  </div>
+</section>
+
+<!-- ================== ACCOMMODATION ================== -->
+<section class="content reveal" id="accommodation">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 04</span>
+      <h2><em>Accommodation</em>.</h2>
+      <p class="section-lead">Cuccaro Club — a quiet venue surrounded by nature in the green hills of Val di Vara, close to the Cinque Terre and the Ligurian Riviera.</p>
+    </div>
+
+    <div class="two-col" style="margin-bottom:3rem">
+      <div class="image-slot" style="aspect-ratio: 4/3">Cuccaro Club · venue photo</div>
+      <div class="prose">
+        <p><strong>Cuccaro Club — Val di Vara e Cinque Terre</strong><br>
+        Via Campo Picchiara 150, 19020 Rocchetta di Vara, La Spezia, Liguria.</p>
+        <p>You will be staying in shared rooms, usually 2–4 people per room depending on final distribution. Rooms may include twin beds, double beds or shared sleeping arrangements according to availability.</p>
+        <p>The venue is in a quiet natural area — shops, supermarkets and city services are not easily reachable on foot. Bring everything you may need in advance, especially personal items and medication.</p>
+        <p><a href="https://www.cuccaroclub.it/en/" target="_blank" rel="noopener" style="color:var(--terracotta); border-bottom:1px solid var(--terracotta); padding-bottom:1px">cuccaroclub.it →</a></p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.4rem; font-style:italic; font-weight:300; margin-bottom:1.5rem; color:var(--moss)">The venue includes</h3>
+    <ul class="checklist">
+      <li>Towels provided</li>
+      <li>Blankets &amp; duvets included</li>
+      <li>Private bathroom in rooms</li>
+      <li>Wi-Fi available</li>
+      <li>On-site restaurant</li>
+      <li>Indoor &amp; outdoor common areas</li>
+      <li>Swimming pool / wellness (subject to availability)</li>
+      <li>Green outdoor surroundings</li>
+      <li>Activity spaces for the project</li>
+    </ul>
+
+    <div class="pullquote">
+      The restaurant offers local, traditional Ligurian cuisine with attention to homemade and local products.
+    </div>
+
+    <div class="prose">
+      <p><strong>Food.</strong> Meals are provided at the venue. Vegetarian, vegan or other dietary options must be requested in advance via the application form. Come with an open mind — the venue will adapt where possible, but flexibility matters, especially in a rural area where options are more limited than in a city.</p>
+      <p><strong>A note on rooms.</strong> Please specify your gender in the application form, as rooms are organised accordingly. If you have allergies, health conditions, accessibility needs or dietary requirements, write them clearly in the form. We'll do our best, though some requests depend on venue availability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PACKING ================== -->
+<section class="content reveal" id="packing">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 05</span>
+      <h2>What to <em>bring</em>.</h2>
+      <p class="section-lead">November in Liguria can be cool, rainy and humid. Pack warm, waterproof, comfortable — and bring something of home for the intercultural evenings.</p>
+    </div>
+
+    <div class="mandatory">
+      <div class="label-tag">Mandatory</div>
+      <div>
+        <h3>A reusable water bottle.</h3>
+        <p>Let's keep LIGHT green. Water will be available throughout the activities — bring your own bottle and refill it to avoid unnecessary plastic waste.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.5rem; font-style:italic; font-weight:300; margin-bottom:1.2rem; color:var(--moss)">Clothes &amp; personal items</h3>
+        <ul class="checklist">
+          <li>Comfortable indoor clothes</li>
+          <li>Warm clothes for evenings</li>
+          <li>Raincoat or waterproof jacket</li>
+          <li>Comfortable walking shoes</li>
+          <li>Outdoor-appropriate shoes</li>
+          <li>Personal toiletries</li>
+          <li>Optional: extra towel</li>
+          <li>Small backpack for daily activities</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.5rem; font-style:italic; font-weight:300; margin-bottom:1.2rem; color:var(--moss)">Health &amp; medicine</h3>
+        <ul class="checklist">
+          <li>Personal medication (enough for full stay)</li>
+          <li>Headache &amp; fever remedies</li>
+          <li>Stomach-ache relief</li>
+          <li>Allergy medication</li>
+          <li>Cold / sore throat remedies</li>
+          <li>EHIC card (EU participants)</li>
+        </ul>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--ink-soft); font-style:italic">An emergency kit will be available, but bring your own basics.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:3rem">
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.5rem; font-style:italic; font-weight:300; margin-bottom:1.2rem; color:var(--moss)">Digital equipment</h3>
+        <p class="prose" style="margin:0">Each national team should bring <strong>1–2 laptops</strong> for digital storytelling, campaign creation and group work. Bring chargers, adapters if needed, and useful digital material from your country.</p>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--ink-soft)"><strong>Italy:</strong> Type C, F &amp; L plugs · 230V · 50Hz.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.5rem; font-style:italic; font-weight:300; margin-bottom:1.2rem; color:var(--moss)">For the intercultural evening</h3>
+        <p class="prose" style="margin:0">Each evening is dedicated to a different country. We can't reimburse what you bring, but we invite you to be creative — local food, sweets, drinks, traditional clothes, music, photos, fun facts, dances, games. Make it interactive and memorable.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--serif); font-size:1.8rem; font-style:italic; font-weight:300; margin: 4rem 0 1.5rem; color:var(--moss)">Before you leave — final checklist</h3>
+    <ul class="checklist">
+      <li>ID card or passport</li>
+      <li>EHIC / health insurance</li>
+      <li>Travel tickets &amp; boarding passes</li>
+      <li>Proofs of payment for reimbursement</li>
+      <li>Reusable water bottle</li>
+      <li>Warm &amp; rainproof clothes</li>
+      <li>Comfortable shoes</li>
+      <li>Personal medicines</li>
+      <li>Laptop for your national team</li>
+      <li>Something fun for the intercultural evening</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================== LIGURIA ================== -->
+<section class="content reveal" id="liguria">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 06</span>
+      <h2>La Spezia &amp; <em>Liguria</em>.</h2>
+      <p class="section-lead">North-western Italy, between the mountains and the Mediterranean. A gateway to the Cinque Terre, the Gulf of Poets, and the quiet green valleys inland.</p>
+    </div>
+
+    <div class="two-col" style="margin-bottom:3rem">
+      <div class="image-slot">Liguria · landscape</div>
+      <div class="image-slot">Val di Vara · the green valley</div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.6rem; font-style:italic; font-weight:300; margin-bottom:1rem; color:var(--moss)">La Spezia</h3>
+        <p class="prose" style="margin:0">A coastal city in Liguria, between Genoa and Tuscany. An important port and strategic point for reaching Cinque Terre, Portovenere, Lerici and the Gulf of Poets. Around La Spezia: sea views, hills, villages, museums, local markets and typical Italian cafés.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif); font-size:1.6rem; font-style:italic; font-weight:300; margin-bottom:1rem; color:var(--moss)">Rocchetta di Vara &amp; Val di Vara</h3>
+        <p class="prose" style="margin:0">Val di Vara is the "green valley" of eastern Liguria — forests, small villages, agriculture, biodiversity, slower rhythms. A meaningful setting for a project on green heritage, sustainability, inclusion and digital storytelling.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      This is not a city-based mobility. We will be in the countryside of the La Spezia province — come prepared, flexible and open-minded.
+    </div>
+
+    <h3 style="font-family:var(--serif); font-size:1.8rem; font-style:italic; font-weight:300; margin-bottom:1.5rem; color:var(--moss)">What to expect</h3>
+    <ul class="checklist">
+      <li>Green landscapes</li>
+      <li>Small villages</li>
+      <li>Liguria's local traditions</li>
+      <li>Italian food culture</li>
+      <li>Possible outdoor activities</li>
+      <li>A peaceful atmosphere</li>
+      <li>Strong connection between nature, heritage &amp; sustainability</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================== TEAM ================== -->
+<section class="content reveal" id="team">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 07</span>
+      <h2>Our <em>team</em>.</h2>
+      <p class="section-lead">The people running the show. You'll meet them in La Spezia.</p>
+    </div>
+    <div class="team-placeholder">
+      <p>Team details — photos, names, roles &amp; contacts — to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================== GDPR ================== -->
+<section class="content reveal" id="gdpr">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 08</span>
+      <h2><em>GDPR</em>.</h2>
+      <p class="section-lead">Information we gather, why, and for how long we store it — under European Union privacy rules.</p>
+    </div>
+    <div class="prose">
+      <p>Please read the European Commission's Erasmus+ &amp; ESC privacy statement for full details on how personal data is processed within the Erasmus+ programme.</p>
+      <p><a href="https://webgate.ec.europa.eu/erasmus-esc/index/privacy-statement" target="_blank" rel="noopener" style="color:var(--terracotta); border-bottom:1px solid var(--terracotta); padding-bottom:1px">webgate.ec.europa.eu/erasmus-esc/privacy-statement →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">L<em>i</em>ght</div>
+        <p class="footer-tag">Learning Inclusion &amp; Green Heritage through Technology — an Erasmus+ Youth Exchange.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="#about">The Project</a></li>
+          <li><a href="#travel">Travel</a></li>
+          <li><a href="#reimbursement">Reimbursement</a></li>
+          <li><a href="#accommodation">Accommodation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>More</h4>
+        <ul>
+          <li><a href="#packing">What to bring</a></li>
+          <li><a href="#liguria">La Spezia &amp; Liguria</a></li>
+          <li><a href="#team">Our team</a></li>
+          <li><a href="#gdpr">GDPR</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 LIGHT · Erasmus+ Youth Exchange</span>
+      <span>Rocchetta di Vara · La Spezia · Italy</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 30) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    toggle.classList.remove('open');
+    links.classList.remove('open');
+  }));
+
+  // Countdown to 7 Nov 2026
+  const target = new Date('2026-11-07T00:00:00');
+  const cdNum = document.getElementById('cdNum');
+  const tick = () => {
+    const days = Math.max(0, Math.ceil((target - new Date()) / (1000 * 60 * 60 * 24)));
+    cdNum.textContent = days;
+  };
+  tick();
+  setInterval(tick, 60 * 60 * 1000);
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
