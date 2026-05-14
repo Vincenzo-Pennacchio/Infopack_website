@@ -609,6 +609,14 @@ section.content + section.content { border-top: 1px solid var(--rule); }
     repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(28,36,25,0.04) 20px, rgba(28,36,25,0.04) 21px);
   pointer-events: none;
 }
+/* When a real image fills the slot: cover it cleanly and drop the hatch overlay */
+.image-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.image-slot:has(img)::after { display: none; }
 
 /* Team placeholder */
 .team-placeholder {
@@ -967,7 +975,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
     </div>
 
     <div class="two-col" style="margin-bottom:3rem">
-      <div class="image-slot" style="aspect-ratio: 4/3">Cuccaro Club · venue photo</div>
+      <div class="image-slot" style="aspect-ratio: 4/3"><img src="Infopack_1.jpeg" alt="Cuccaro Club — the project venue in Rocchetta di Vara"></div>
       <div class="prose">
         <p><strong>Cuccaro Club — Val di Vara e Cinque Terre</strong><br>
         Via Campo Picchiara 150, 19020 Rocchetta di Vara, La Spezia, Liguria.</p>
@@ -1084,8 +1092,8 @@ section.content + section.content { border-top: 1px solid var(--rule); }
     </div>
 
     <div class="two-col" style="margin-bottom:3rem">
-      <div class="image-slot">Liguria · landscape</div>
-      <div class="image-slot">Val di Vara · the green valley</div>
+      <div class="image-slot"><img src="Infopack_3.jpeg" alt="Indoor swimming pool at the Cuccaro Club venue"></div>
+      <div class="image-slot"><img src="Infopack_2.jpeg" alt="The green valley of Val di Vara surrounding the venue"></div>
     </div>
 
     <div class="two-col">
