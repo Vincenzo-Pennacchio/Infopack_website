@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIGHT — Learning Inclusion & Green Heritage through Technology</title>
-<meta name="description" content="Erasmus+ Youth Exchange in Rocchetta di Vara, La Spezia, Italy. 7–14 November 2026. 33 participants from Italy, Latvia, Greece, Romania & Spain.">
+<meta name="description" content="Erasmus+ KA152 Youth Exchange in Rocchetta di Vara, La Spezia, Italy. 7–14 November 2026. 32 participants from Italy, Latvia, Greece, Romania & Spain.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -695,6 +695,59 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   flex-wrap: wrap; gap: 1rem;
 }
 
+/* Partner logos strip */
+.partner-strip {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+.partner-logos-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--moss);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.partner-logos-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.partner-logo-slot {
+  width: 110px;
+  height: 52px;
+  border: 1px dashed rgba(28,36,25,0.25);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 0.3rem;
+}
+
+/* Italian phrases table */
+.phrases-table { width: 100%; border-collapse: collapse; }
+.phrases-table tr { border-bottom: 1px solid var(--rule); }
+.phrases-table tr:last-child { border-bottom: 0; }
+.phrases-table td { padding: 1rem 0; vertical-align: middle; }
+.phrases-table .it {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--moss);
+  width: 50%;
+  padding-right: 2rem;
+}
+.phrases-table .en { color: var(--ink-soft); font-size: 0.98rem; }
+
 /* ---------------------------------------------------------
    REVEAL ANIMATION
 ---------------------------------------------------------- */
@@ -726,6 +779,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
       <a href="#liguria">Liguria</a>
       <a href="#team">Team</a>
       <a href="#gdpr">GDPR</a>
+      <a href="#italian">Italiano</a>
     </div>
   </div>
 </nav>
@@ -748,7 +802,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   <div class="container">
     <div class="hero-meta-top">
       <span>Erasmus+ · Youth Exchange</span>
-      <span>Issue Nº 01 · 2026</span>
+      <span>KA152 · Project Nº ——— · 2026</span>
     </div>
 
     <h1 class="hero-title">L<em>i</em>ght</h1>
@@ -766,7 +820,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
       </div>
       <div class="meta-item">
         <div class="label">Who</div>
-        <div class="value"><strong>33</strong> participants<br>5 countries</div>
+        <div class="value"><strong>32</strong> participants<br>5 countries</div>
       </div>
       <div class="meta-item">
         <div class="label">Countdown</div>
@@ -777,6 +831,20 @@ section.content + section.content { border-top: 1px solid var(--rule); }
     </div>
   </div>
 </header>
+
+<!-- ================== PARTNER LOGOS ================== -->
+<div class="partner-strip">
+  <div class="container">
+    <p class="partner-logos-label">Partner organisations</p>
+    <div class="partner-logos-row">
+      <div class="partner-logo-slot">Italy<br>logo</div>
+      <div class="partner-logo-slot">Latvia<br>logo</div>
+      <div class="partner-logo-slot">Greece<br>logo</div>
+      <div class="partner-logo-slot">Romania<br>logo</div>
+      <div class="partner-logo-slot">Spain<br>logo</div>
+    </div>
+  </div>
+</div>
 
 <!-- ================== INDEX ================== -->
 <section class="index" aria-label="Sections">
@@ -794,6 +862,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
       <a href="#liguria"        class="index-item"><span class="num">06</span><span>La Spezia &amp; Liguria</span><span class="arrow">→</span></a>
       <a href="#team"           class="index-item"><span class="num">07</span><span>Our Team</span><span class="arrow">→</span></a>
       <a href="#gdpr"           class="index-item"><span class="num">08</span><span>GDPR</span><span class="arrow">→</span></a>
+      <a href="#italian"        class="index-item"><span class="num">09</span><span>Un po' di italiano</span><span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -897,6 +966,14 @@ section.content + section.content { border-top: 1px solid var(--rule); }
       La Spezia Centrale is the meeting point. Please do not go directly to the accommodation unless the organising team instructs you to.
     </div>
 
+    <div class="mandatory" style="margin-bottom:2rem">
+      <div class="label-tag">Important</div>
+      <div>
+        <h3>Approval before purchase.</h3>
+        <p>All travel itineraries must be approved by your national partner organisation before any ticket is purchased. Do not book or buy tickets without prior confirmation from your reference partner organisation.</p>
+      </div>
+    </div>
+
     <div class="two-col">
       <div class="prose">
         <p><strong>From airport to La Spezia Centrale</strong> — organise your trip by train or bus/train combination after landing. Check connections carefully before buying tickets, and make sure your arrival time allows you to reach La Spezia Centrale on arrival day.</p>
@@ -925,6 +1002,10 @@ section.content + section.content { border-top: 1px solid var(--rule); }
       <p class="section-lead">Maximum amounts by distance band (green travel) and local transport. Keep every ticket, boarding pass, and proof of payment.</p>
     </div>
 
+    <p style="font-family:var(--sans); font-size:0.78rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--moss); margin-bottom:1.2rem; padding:0.8rem 1.2rem; border:1px solid var(--moss); display:inline-block; border-radius:2px">
+      🌿 Green travel options are recommended where feasible
+    </p>
+
     <div class="table-wrap">
       <table class="editorial-table">
         <thead>
@@ -937,16 +1018,16 @@ section.content + section.content { border-top: 1px solid var(--rule); }
         </thead>
         <tbody>
           <tr><th>Italy</th><td>7</td><td>—</td><td>—</td></tr>
-          <tr><th>Romania</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
-          <tr><th>Latvia</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
-          <tr><th>Greece</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
-          <tr><th>Spain</th><td>5</td><td>€ 315.00</td><td>€ 70.00</td></tr>
+          <tr><th>Romania</th><td>5</td><td>€ 315.00</td><td>—</td></tr>
+          <tr><th>Latvia</th><td>5</td><td>€ 315.00</td><td>—</td></tr>
+          <tr><th>Greece</th><td>5</td><td>€ 315.00</td><td>—</td></tr>
+          <tr><th>Spain</th><td>5</td><td>€ 315.00</td><td>—</td></tr>
         </tbody>
       </table>
     </div>
 
     <p style="font-size:0.9rem; color:var(--ink-soft); font-style:italic; margin-bottom:3rem">
-      Each national group is encouraged to include 2 participants with fewer opportunities.
+      Each national group <strong style="color:var(--ink)">must include 2 participants with fewer opportunities</strong>.
     </p>
 
     <div class="two-col">
@@ -960,6 +1041,9 @@ section.content + section.content { border-top: 1px solid var(--rule); }
           <li>Proof of payment</li>
           <li>Invoices &amp; receipts when available</li>
         </ul>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--ink-soft)">
+          <strong style="color:var(--ink)">Physical tickets</strong> (paper or printed) must be kept and handed directly to <strong style="color:var(--ink)">Senza Confini</strong> upon arrival at the venue. Additionally, upload a clear scan or photo of every physical ticket to the project Google Drive before arrival.
+        </p>
       </div>
       <div class="prose">
         <h4 style="font-family:var(--sans); font-size:1rem; font-weight:600; margin-bottom:1rem">Workflow</h4>
@@ -1059,7 +1143,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
           <li>Cold / sore throat remedies</li>
           <li>EHIC card (EU participants)</li>
         </ul>
-        <p style="margin-top:1rem; font-size:0.9rem; color:var(--ink-soft); font-style:italic">An emergency kit will be available, but bring your own basics.</p>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--ink-soft); font-style:italic">Emergency kits will be available in the common rooms. The reception will always be active and reachable. Still, bring your own basics as a precaution.</p>
       </div>
     </div>
 
@@ -1162,6 +1246,82 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   </div>
 </section>
 
+<!-- ================== ITALIAN PHRASES ================== -->
+<section class="content reveal" id="italian">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">— 09</span>
+      <h2>Un po' di <em>italiano</em>.</h2>
+      <p class="section-lead">A few typical Italian phrases to help you connect with locals. Don't worry about the accent — the attempt is always appreciated.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <table class="phrases-table">
+          <tbody>
+            <tr>
+              <td class="it">Ciao, come stai?</td>
+              <td class="en">Hello, how are you?</td>
+            </tr>
+            <tr>
+              <td class="it">Io mi chiamo…</td>
+              <td class="en">My name is…</td>
+            </tr>
+            <tr>
+              <td class="it">Ho bisogno di aiuto</td>
+              <td class="en">I need help</td>
+            </tr>
+            <tr>
+              <td class="it">Buongiorno</td>
+              <td class="en">Good morning</td>
+            </tr>
+            <tr>
+              <td class="it">Buonasera</td>
+              <td class="en">Good evening</td>
+            </tr>
+            <tr>
+              <td class="it">Quando inizia l'aperitivo?</td>
+              <td class="en">When does the aperitivo start?</td>
+            </tr>
+            <tr>
+              <td class="it">Grazie mille</td>
+              <td class="en">Thank you very much</td>
+            </tr>
+            <tr>
+              <td class="it">Per favore</td>
+              <td class="en">Please</td>
+            </tr>
+            <tr>
+              <td class="it">Scusi, parla inglese?</td>
+              <td class="en">Excuse me, do you speak English?</td>
+            </tr>
+            <tr>
+              <td class="it">Non capisco</td>
+              <td class="en">I don't understand</td>
+            </tr>
+            <tr>
+              <td class="it">Dov'è il bagno?</td>
+              <td class="en">Where is the bathroom?</td>
+            </tr>
+            <tr>
+              <td class="it">Un caffè, per favore</td>
+              <td class="en">A coffee, please</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p>Italian is a warm, expressive language — and even a few words go a long way. Locals in smaller Ligurian villages often speak little English, so knowing some phrases will genuinely help.</p>
+        <p>Don't be shy. Italians appreciate the effort, even if the pronunciation is creative. A smile and a <em>buongiorno</em> open every door.</p>
+        <div class="pullquote" style="margin:2rem 0 0; font-size:1.3rem">
+          L'aperitivo — the Italian ritual of early-evening drinks and snacks — is taken very seriously. Ask when it starts.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================== FOOTER ================== -->
 <footer class="site-footer">
   <div class="container">
@@ -1186,6 +1346,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
           <li><a href="#liguria">La Spezia &amp; Liguria</a></li>
           <li><a href="#team">Our team</a></li>
           <li><a href="#gdpr">GDPR</a></li>
+          <li><a href="#italian">Un po' di italiano</a></li>
         </ul>
       </div>
     </div>
