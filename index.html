@@ -15,15 +15,24 @@
    TOKENS
 ---------------------------------------------------------- */
 :root {
+  /* Neutrals */
   --paper:        #F4EFE6;
   --paper-warm:   #EBE3D1;
+  --paper-cool:   #E8EEE8;     /* faint green-tinted cream for section variation */
   --ink:          #1C2419;
   --ink-soft:     #3A4434;
+
+  /* Greens — primary accent system */
+  --forest:       #1F3525;     /* deepest green — replaces ink in mandatory & footer */
   --moss:         #3E5236;
   --moss-light:   #5A7050;
   --sage:         #8B9F76;
-  --terracotta:   #C25A3C;
-  --terracotta-d: #9E4528;
+
+  /* Blues — Mediterranean / coastal accent */
+  --sea-deep:     #2E5A6A;
+  --sea:          #5B8A9A;
+  --sea-light:    #8FB5C2;
+
   --rule:         rgba(28, 36, 25, 0.15);
   --rule-strong:  rgba(28, 36, 25, 0.4);
 
@@ -78,7 +87,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
   font-style: italic;
   font-weight: 300;
   font-size: 1.1rem;
-  color: var(--terracotta);
+  color: var(--moss);
   display: inline-block;
   margin-bottom: 0.5rem;
 }
@@ -117,7 +126,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
 .brand-mark {
   font-style: italic;
   font-weight: 300;
-  color: var(--terracotta);
+  color: var(--sea);
   font-size: 0.9em;
 }
 .nav-links {
@@ -137,7 +146,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 1px;
-  background: var(--terracotta);
+  background: var(--sea);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.6, 0, 0.2, 1);
@@ -210,7 +219,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
 .hero-title em {
   font-style: italic;
   font-weight: 300;
-  color: var(--terracotta);
+  color: var(--sea);
   font-variation-settings: "opsz" 144, "SOFT" 100;
 }
 .hero-tagline {
@@ -256,7 +265,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
   top: 8rem;
   width: 60%;
   max-width: 700px;
-  opacity: 0.18;
+  opacity: 0.28;
   pointer-events: none;
   z-index: 0;
 }
@@ -269,7 +278,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
   gap: 0.6rem;
   font-family: var(--serif);
   font-style: italic;
-  color: var(--terracotta);
+  color: var(--moss);
   font-size: 1rem;
 }
 .countdown strong {
@@ -318,7 +327,7 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--serif); font-weight: 400; letter-
 .index-item .num {
   font-style: italic;
   font-size: 0.85rem;
-  color: var(--terracotta);
+  color: var(--moss);
   font-weight: 300;
 }
 .index-item .arrow {
@@ -351,7 +360,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   font-weight: 350;
   letter-spacing: -0.02em;
 }
-.section-head h2 em { font-style: italic; font-weight: 300; color: var(--terracotta); }
+.section-head h2 em { font-style: italic; font-weight: 300; color: var(--moss); }
 .section-lead {
   font-family: var(--serif);
   font-size: clamp(1.15rem, 1.5vw, 1.3rem);
@@ -405,7 +414,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   font-style: italic;
   font-weight: 300;
   font-size: 2rem;
-  color: var(--terracotta);
+  color: var(--moss);
   line-height: 1;
   min-width: 2.5ch;
 }
@@ -428,7 +437,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   line-height: 1.25;
   color: var(--moss);
   padding: 2rem 0 2rem 2.5rem;
-  border-left: 2px solid var(--terracotta);
+  border-left: 2px solid var(--sea);
   margin: 3rem 0;
   max-width: 50ch;
 }
@@ -438,13 +447,13 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   font-family: var(--serif);
   font-size: 4rem;
   line-height: 0;
-  color: var(--terracotta);
+  color: var(--sea);
   margin-bottom: 1.5rem;
 }
 
 /* Mandatory / highlight box */
 .mandatory {
-  background: var(--ink);
+  background: var(--forest);
   color: var(--paper);
   padding: 3rem;
   margin: 3rem 0;
@@ -460,7 +469,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--terracotta);
+  color: var(--sea-light);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   padding-block: 0.5rem;
@@ -559,7 +568,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   font-style: italic;
   font-size: 1.6rem;
   font-weight: 400;
-  color: var(--terracotta);
+  color: var(--sea);
   margin-bottom: 0.4rem;
 }
 .card h4 { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; }
@@ -591,7 +600,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
 
 /* Image placeholder — clean, editorial */
 .image-slot {
-  background: linear-gradient(135deg, var(--paper-warm), var(--sage));
+  background: linear-gradient(135deg, var(--sage), var(--sea-light));
   aspect-ratio: 4 / 3;
   border-radius: 2px;
   display: flex; align-items: center; justify-content: center;
@@ -636,7 +645,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
 
 /* Footer */
 .site-footer {
-  background: var(--ink);
+  background: var(--forest);
   color: var(--paper);
   padding: 5rem 0 2rem;
 }
@@ -654,7 +663,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--terracotta);
+  color: var(--sea-light);
   margin-bottom: 1.2rem;
 }
 .footer-brand {
@@ -665,7 +674,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   line-height: 1;
   margin-bottom: 0.8rem;
 }
-.footer-brand em { font-style: italic; color: var(--terracotta); }
+.footer-brand em { font-style: italic; color: var(--sea-light); }
 .footer-tag {
   font-family: var(--serif);
   font-style: italic;
@@ -676,7 +685,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
 .footer-grid ul { list-style: none; padding: 0; }
 .footer-grid li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 .footer-grid a { color: rgba(244, 239, 230, 0.75); transition: color 0.2s; }
-.footer-grid a:hover { color: var(--terracotta); }
+.footer-grid a:hover { color: var(--sea-light); }
 .footer-bottom {
   display: flex; justify-content: space-between;
   font-size: 0.8rem;
@@ -981,7 +990,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
         Via Campo Picchiara 150, 19020 Rocchetta di Vara, La Spezia, Liguria.</p>
         <p>You will be staying in shared rooms, usually 2–4 people per room depending on final distribution. Rooms may include twin beds, double beds or shared sleeping arrangements according to availability.</p>
         <p>The venue is in a quiet natural area — shops, supermarkets and city services are not easily reachable on foot. Bring everything you may need in advance, especially personal items and medication.</p>
-        <p><a href="https://www.cuccaroclub.it/en/" target="_blank" rel="noopener" style="color:var(--terracotta); border-bottom:1px solid var(--terracotta); padding-bottom:1px">cuccaroclub.it →</a></p>
+        <p><a href="https://www.cuccaroclub.it/en/" target="_blank" rel="noopener" style="color:var(--moss); border-bottom:1px solid var(--moss); padding-bottom:1px">cuccaroclub.it →</a></p>
       </div>
     </div>
 
@@ -1148,7 +1157,7 @@ section.content + section.content { border-top: 1px solid var(--rule); }
     </div>
     <div class="prose">
       <p>Please read the European Commission's Erasmus+ &amp; ESC privacy statement for full details on how personal data is processed within the Erasmus+ programme.</p>
-      <p><a href="https://webgate.ec.europa.eu/erasmus-esc/index/privacy-statement" target="_blank" rel="noopener" style="color:var(--terracotta); border-bottom:1px solid var(--terracotta); padding-bottom:1px">webgate.ec.europa.eu/erasmus-esc/privacy-statement →</a></p>
+      <p><a href="https://webgate.ec.europa.eu/erasmus-esc/index/privacy-statement" target="_blank" rel="noopener" style="color:var(--moss); border-bottom:1px solid var(--moss); padding-bottom:1px">webgate.ec.europa.eu/erasmus-esc/privacy-statement →</a></p>
     </div>
   </div>
 </section>
