@@ -721,24 +721,26 @@ section.content + section.content { border-top: 1px solid var(--rule); }
 
 /* Partner logos strip */
 .partner-strip {
-  padding: 1.5rem 0;
-  background: var(--paper-warm);
+  padding: 2.5rem 0;
+  background: #ffffff;
+  border-top: 3px solid var(--forest);
+  box-shadow: 0 -1px 0 rgba(31,53,37,0.06), 0 4px 16px rgba(31,53,37,0.07);
 }
 .partner-logos-label {
   font-family: var(--sans);
   font-size: 0.65rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-weight: 600;
-  color: var(--moss);
+  font-weight: 700;
+  color: var(--forest);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .partner-logos-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 .partner-logo-slot {
@@ -748,6 +750,12 @@ section.content + section.content { border-top: 1px solid var(--rule); }
   align-items: center;
   justify-content: center;
   padding: 0.3rem;
+  filter: drop-shadow(0 1px 3px rgba(31,53,37,0.10));
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.partner-logo-slot:hover {
+  filter: drop-shadow(0 3px 8px rgba(31,53,37,0.18));
+  transform: translateY(-2px);
 }
 
 /* Italian phrases table */
